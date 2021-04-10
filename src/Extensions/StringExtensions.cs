@@ -7,7 +7,7 @@ namespace BreadcrumbJF.Extensions
   {
     internal static Type GetController(this string value, Assembly assembly)
     {
-      var controllerType = assembly.GetType($"Breadcrumb.Controllers.{value.RemoveControllerText()}Controller");
+      var controllerType = assembly.GetType($"{assembly.FullName.Split(',')[0]}.Controllers.{value.RemoveControllerText()}Controller");
       return controllerType;
     }
     internal static string RemoveControllerText(this string value)

@@ -2,12 +2,8 @@
 using System.Reflection;
 using System;
 using BreadcrumbJF.Extensions;
-using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.Extensions.FileProviders;
-using BreadcrumbJF.Components;
-using System.Collections.Generic;
 
-namespace BreadcrumbJF.Configuration
+namespace BreadcrumbJF
 {
   public static class BreadcrumbJFConfiguration
   {
@@ -20,9 +16,6 @@ namespace BreadcrumbJF.Configuration
         return new BreadcrumbInitialJF(assembly);
       });
       services.AddScoped<IBreadcrumbMethods, BreadcrumbMethods>();
-
-      
-
       return services;
     }
 }
