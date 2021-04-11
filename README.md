@@ -9,11 +9,13 @@
 
 ## Attributes
 **BreadcrumbAttribute**<br>
-This class receive just a parameter with the name Description (one per method)
+This class receive just a parameter with the name Description (one per method)<br>
+Esta clase recibe un parametro con el nombre Descripción (Maximo 1 por metodo)
 
 
 **BreadcrumbParentAttribute**<br>
-This class migth work for indicate your parent breadcrumb (n per method), receive 3 parameters (Action, Controller and ShowParent(Default true))
+This class migth work for indicate your parent breadcrumb (n per method), receive 3 parameters (Action, Controller and ShowParent(Default true))<br>
+Esta clase sirve para indicar al breadcrumb padre (Varios por method), recibe 3 parametros (Action, Controller and ShowParent(Default true))
 
 
 ## Installation
@@ -25,6 +27,8 @@ Necesitas escribir este codigo en la sección Configure de tu startup:
 services.AddBreadcrumbJF(GetType().Assembly);
 ```
 Second step: You need add the attributes in your methods
+
+Necesitas agregar este atributo en tus metodos
 ```
 [Breadcrumb("Index")]
 public IActionResult Index(string returnUrl)
@@ -32,7 +36,8 @@ public IActionResult Index(string returnUrl)
   return View();
 }
 ```
-Or
+Or<br>
+O (Para indicar a su padre)
 ```
 [BreadcrumbParent("Privacy", "Home")]
 [Breadcrumb("Hijo")]
@@ -46,9 +51,12 @@ public IActionResult Privacy()
   return View();
 }
 ```
-Third step: You need create your Views in **/Views/Shared/Components/Breadcrumb/Default.cshtml**.
-This view must receive a model of type **@model IEnumerable<BreadcrumbJF.ViewModel.BreadcrumbViewModel>**
+Third step: You need create your Views in **/Views/Shared/Components/Breadcrumb/Default.cshtml**<br>
+Necesitas crear una vista en la ruta **/Views/Shared/Components/Breadcrumb/Default.cshtml** 
 
+
+This view must receive a model of type **@model IEnumerable<BreadcrumbJF.ViewModel.BreadcrumbViewModel>** <br>
+Esta vista recibe un modelo de tipo **@model IEnumerable<BreadcrumbJF.ViewModel.BreadcrumbViewModel>**
 Example:
 ```
 @model IEnumerable<BreadcrumbJF.ViewModel.BreadcrumbViewModel>
@@ -66,11 +74,13 @@ Example:
     </ol>
 </nav>
 ```
-Fouth step: You need to add reference in your _ViewImports.cshtml (/Views/_ViewImports.cshtml)
+Fouth step: You need to add reference in your _ViewImports.cshtml (/Views/_ViewImports.cshtml)<br>
+Necesitas agregar una referencia en tu  _ViewImports.cshtml (/Views/_ViewImports.cshtml)
 ```
 @addTagHelper *, BreadcrumbJF
 ```
-Fifth step: You need to make use of ViewComponent in your Layout.cshtml
+Fifth step: You need to make use of ViewComponent in your Layout.cshtml <br>
+Necesitas hacer uso del ViewComponent en tu Layout
 ```
 @{
     ViewData["Title"] = "Home Page";
