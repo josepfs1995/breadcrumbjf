@@ -1,5 +1,6 @@
 ﻿using BreadcrumbJF.Attributes;
 using BreadcrumbJF.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace BreadcrumbJF.Extensions
     public MethodInfo GetMethodInfoByControllerAndAction(string controller, string action)
     {
       var controllerType = controller.GetController(_breadcrumbJF.Assembly);
-      return controllerType.GetMethod(action);
+      return controllerType.GetMethods().FirstOrDefault(x=> !x.GetCustomAttributes(typeof(HttpPostAttribute)).Any() && !x.GetCustomAttributes(typeof(HttpPutAttribute)).Any() && !x.GetCustomAttributes(typeof(HttpDeleteAttribute)).Any() && x.Name == action);
     }
     public bool ContainsParent(MethodInfo methodInfo)
     {
