@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Authors>Josep Fuentes</Authors>
-    <Company />
+    <Authors>Isac Josep Fuentes</Authors>
+    <Company>Isac Josep Fuentes</Company>
     <Description>This Nuget is a generates of breadcrumb for your web.</Description>
     <PackageProjectUrl>https://github.com/josepfs1995/breadcrumbjf</PackageProjectUrl>
     <RepositoryUrl>https://github.com/josepfs1995/breadcrumbjf</RepositoryUrl>
@@ -12,7 +12,7 @@
     <PackageReleaseNotes>This version is alpha</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 	
   <ItemGroup>

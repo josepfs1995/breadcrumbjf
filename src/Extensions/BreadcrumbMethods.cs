@@ -2,7 +2,6 @@
 using BreadcrumbJF.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 namespace BreadcrumbJF.Extensions
@@ -14,10 +13,13 @@ namespace BreadcrumbJF.Extensions
     {
       _breadcrumbJF = breadcrumbJF;
     }
-    public MethodInfo GetMethodInfoByControllerAndAction(string controller, string action)
+    public MethodInfo GetMethodInfoByControllerAndAction(string controller, string action, string area = null)
     {
-      var controllerType = controller.GetController(_breadcrumbJF.Assembly);
-      return controllerType.GetMethods().FirstOrDefault(x=> !x.GetCustomAttributes(typeof(HttpPostAttribute)).Any() && !x.GetCustomAttributes(typeof(HttpPutAttribute)).Any() && !x.GetCustomAttributes(typeof(HttpDeleteAttribute)).Any() && x.Name == action);
+      var controllerType = controller.GetController(_breadcrumbJF.Assembly, area);
+      var method = controllerType.GetMethods().FirstOrDefault(x => !x.GetCustomAttributes(typeof(HttpPostAttribute)).Any() && !x.GetCustomAttributes(typeof(HttpPutAttribute)).Any() && !x.GetCustomAttributes(typeof(HttpDeleteAttribute)).Any() && x.Name == action);
+      if(method == null) throw new ArgumentNullException("Method no exist");
+
+      return method;
     }
     public bool ContainsParent(MethodInfo methodInfo)
     {

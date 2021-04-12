@@ -5,9 +5,11 @@ namespace BreadcrumbJF.Extensions
 {
   internal static class StringExtensions
   {
-    internal static Type GetController(this string value, Assembly assembly)
+    internal static Type GetController(this string value, Assembly assembly, string area)
     {
-      var controllerType = assembly.GetType($"{assembly.FullName.Split(',')[0]}.Controllers.{value.RemoveControllerText()}Controller");
+      area = area != null ? $".Areas.{area}" : "";
+      var name = $"{assembly.FullName.Split(',')[0]}{area}.Controllers.{value.RemoveControllerText()}Controller";
+      var controllerType = assembly.GetType(name);
       return controllerType;
     }
     internal static string RemoveControllerText(this string value)
