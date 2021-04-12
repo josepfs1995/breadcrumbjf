@@ -14,8 +14,8 @@ Esta clase recibe un parametro con el nombre Descripción (Maximo 1 por metodo)
 
 
 **BreadcrumbParentAttribute**<br>
-This class migth work for indicate your parent breadcrumb (n per method), receive 3 parameters (Action, Controller and ShowParent(Default true))<br>
-Esta clase sirve para indicar al breadcrumb padre (Varios por method), recibe 3 parametros (Action, Controller and ShowParent(Default true))
+This class migth work for indicate your parent breadcrumb (n per method), receive 4 parameters (Action, Controller, Area and ShowParent(Default true))<br>
+Esta clase sirve para indicar al breadcrumb padre (Varios por method), recibe 4 parametros (Action, Controller, Area and ShowParent(Default true))
 
 
 ## Installation
